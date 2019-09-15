@@ -4,17 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.smattme</groupId>
+    <groupId>com.christianmeiners</groupId>
     <artifactId>mysql-backup4j</artifactId>
-    <version>1.0.1</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>
         This is a simple library for backing up mysql databases and sending to emails, cloud storage and so on.
-        It also provide a method for programmatically, importing SQL queries generated during the export process,
+        It also provide a method for programmatically, importing SQL queries generated during the export process.
+        It's a fork of Seun Matt's version of mysql-backup4j https://github.com/SeunMatt/mysql-backup4j
     </description>
-    <url>https://github.com/SeunMatt/mysql-backup4j</url>
+    <url>https://github.com/cgfm/mysql-backup4j</url>
 
     <licenses>
         <license>
@@ -25,6 +26,11 @@
 
     <developers>
         <developer>
+            <name>Christian Meiners</name>
+            <email>cgf.meiners@gmail.com</email>
+        </developer>
+
+        <developer>
             <name>Seun Matt</name>
             <email>smatt382@gmail.com</email>
             <organization>SmattMe</organization>
@@ -33,9 +39,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/SeunMatt/mysql-backup4j.git</connection>
+        <connection>scm:git:git://github.com/cgfm/mysql-backup4j.git</connection>
         <developerConnection>scm:git:ssh://github.com:SeunMatt/mysql-backup4j.git</developerConnection>
-        <url>https://github.com/SeunMatt/mysql-backup4j/tree/master</url>
+        <url>https://github.com/cgfm/mysql-backup4j/tree/master</url>
     </scm>
 
     <dependencies>

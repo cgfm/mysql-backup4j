@@ -1,4 +1,4 @@
-package com.smattme;
+package com.christianmeiners;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,9 +36,11 @@ public class MysqlExportService {
     public static final String EMAIL_MESSAGE = "EMAIL_MESSAGE";
     public static final String EMAIL_FROM = "EMAIL_FROM";
     public static final String EMAIL_TO = "EMAIL_TO";
+
     public static final String DB_NAME = "DB_NAME";
     public static final String DB_USERNAME = "DB_USERNAME";
     public static final String DB_PASSWORD = "DB_PASSWORD";
+
     public static final String TEMP_DIR = "TEMP_DIR";
     public static final String ADD_IF_NOT_EXISTS = "ADD_IF_NOT_EXISTS";
 

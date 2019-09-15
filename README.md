@@ -15,7 +15,7 @@ The artifact is available on Maven Central and can be added to the project's pom
 
 ```xml
 <dependency>
-    <groupId>com.smattme</groupId>
+    <groupId>com.christianmeinerscom.christianmeiners</groupId>
     <artifactId>mysql-backup4j</artifactId>
     <version>1.0.1</version>
 </dependency>
