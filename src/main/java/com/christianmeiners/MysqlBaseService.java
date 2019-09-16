@@ -197,6 +197,9 @@ public class MysqlBaseService {
      * @return boolean
      */
     private static boolean missingLink(Set<String> added, List<String> existing, String routineDefinition) {
+        if(routineDefinition==null)
+            routineDefinition="";
+
         for (String s : existing)
             if (routineDefinition.contains(s) && !added.contains(s))
                 return true;

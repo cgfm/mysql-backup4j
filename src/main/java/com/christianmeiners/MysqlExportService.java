@@ -179,7 +179,7 @@ public class MysqlExportService {
 
 
         if (table != null && !table.isEmpty()) {
-            rs = stmt.executeQuery("SHOW CREATE TABLE `" + table + "`;");
+            rs = stmt.executeQuery("SHOW CREATE TABLE " + table + ";");
             while (rs.next()) {
                 String qtbl = rs.getString(1);
                 String query = rs.getString(2);
@@ -214,7 +214,7 @@ public class MysqlExportService {
 
         StringBuilder sql = new StringBuilder();
 
-        ResultSet rs = stmt.executeQuery("SELECT * FROM `" + table + "`;");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM " + table + ";");
 
         //move to the last row to get max rows returned
         rs.last();
@@ -317,6 +317,11 @@ public class MysqlExportService {
         ResultSet rs = stmt.executeQuery("SHOW CREATE " + type + " " + name + ";");
         rs.next();
 
+        if(rs.getString("Create " + type)==null) {
+            logger.warn("User \""+properties.getProperty(DB_USERNAME)+"\" has no right to read Create Statement for "+type+" "+name);
+            return "";
+        }
+
         sql.append("\n\n--")
                 .append("\n")
                 .append(MysqlBaseService.SQL_START_PATTERN)
@@ -326,7 +331,7 @@ public class MysqlExportService {
                 .append(name)
                 .append("\n--\n\n")
                 .append(rs.getString("Create " + type))
-                .append((rs.getString("Create " + type).endsWith(";")?"":";"))
+                .append((rs.getString("Create " + type).endsWith(";") ? "" : ";"))
                 .append("\n\n--\n")
                 .append(MysqlBaseService.SQL_END_PATTERN)
                 .append("  ")
@@ -385,7 +390,7 @@ public class MysqlExportService {
         //get the routines that are in the database
         for (String view : MysqlBaseService.getAllViews(database, stmt)) {
             try {
-                sql.append(getRoutineCreateStatement(view.trim(),"VIEW"));
+                sql.append(getRoutineCreateStatement(view.trim(), "VIEW"));
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -613,7 +618,6 @@ public class MysqlExportService {
                 return generatedZipFile;
         } else {
             File file = new File(dirName + File.separatorChar + getSqlFilename());
-            System.out.println(file.getAbsolutePath());
             if (file.exists())
                 return file;
         }
